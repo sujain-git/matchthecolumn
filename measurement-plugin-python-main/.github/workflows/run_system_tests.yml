@@ -1,0 +1,67 @@
+name: Run system tests
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  run_system_tests:
+    name: Run system tests
+    runs-on: 
+      - self-hosted
+      - windows
+      - x64
+      - rdss-measlinkbot-win-10-${{ matrix.configuration }}
+    strategy:
+      matrix:
+        configuration: ["py32", "py64"]
+      # Fail-fast skews the pass/fail ratio and seems to make pytest produce
+      # incomplete JUnit XML results.
+      fail-fast: false
+    timeout-minutes: 90
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+      - name: Copy and rename .env.simulation to .env
+        run: cp examples/.env.simulation .env
+
+      # ni-measurement-plugin-sdk-service  
+      - name: Cache virtualenv (ni-measurement-plugin-sdk-service)
+        uses: actions/cache@v4
+        id: cache-nims
+        with:
+          path: |
+            packages/service/.venv
+            packages/service/.tox
+          key: run-system-tests-nims-${{ runner.os }}-${{ matrix.configuration }}-${{ hashFiles('packages/service/poetry.lock') }}
+      - name: Install dependencies (ni-measurement-plugin-sdk-service)
+        run: poetry install -v
+        working-directory: ./packages/service
+      - name: Run system tests (ni-measurement-plugin-sdk-service)
+        run: poetry run tox
+        working-directory: ./packages/service
+
+      # ni-measurement-plugin-sdk-generator
+      - name: Cache virtualenv (ni-measurement-plugin-sdk-generator)
+        uses: actions/cache@v4
+        id: cache-nimg
+        with:
+          path: |
+            packages/generator/.venv
+            packages/generator/.tox
+          key: run-system-tests-nimg-${{ runner.os }}-${{ matrix.configuration }}-${{ hashFiles('packages/generator/poetry.lock') }}
+      - name: Install dependencies (ni-measurement-plugin-sdk-generator)
+        run: poetry install -v
+        working-directory: ./packages/generator
+      - name: Run system tests (ni-measurement-plugin-sdk-generator)
+        run: poetry run tox
+        working-directory: ./packages/generator
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test_results_system_${{ matrix.configuration }}
+          path: |
+            ./packages/generator/test_results/*.xml
+            ./packages/service/test_results/*.xml
+        if: always()

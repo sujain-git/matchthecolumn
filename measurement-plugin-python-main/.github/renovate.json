@@ -1,0 +1,20 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "branchPrefix": "users/renovate/",
+  "extends": [
+    "config:recommended", 
+    ":maintainLockFilesWeekly",
+    ":automergePatch",
+    "schedule:automergeDaily"
+  ],
+  "git-submodules": {
+    "automerge": true,
+    "enabled": true
+  },
+  "packageRules": [
+    {
+      "matchDepNames": ["third_party/ni-apis"],
+      "extends": ["schedule:weekly"]
+    }
+  ]
+}

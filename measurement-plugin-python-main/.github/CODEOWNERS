@@ -1,0 +1,9 @@
+# Default code owner for the repository
+* @csjall @dixonjoel @bkeryan
+
+# Add mshafer-ni and nstokes-nati for Python files
+*.py @csjall @dixonjoel @bkeryan @mshafer-ni @nstokes-nati
+
+# Add nstokes-nati for documentation
+*.md @csjall @dixonjoel @bkeryan @nstokes-nati
+/_docs_source/ @csjall @dixonjoel @bkeryan @nstokes-nati

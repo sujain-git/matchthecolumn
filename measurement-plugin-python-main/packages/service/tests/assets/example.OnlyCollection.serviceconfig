@@ -1,0 +1,18 @@
+{
+  "services": [
+    {
+      "displayName": "SampleMeasurement",
+      "serviceClass": "SampleMeasurement_Python",
+      "descriptionUrl": "https://www.example.com/SampleMeasurement.html",
+      "providedInterfaces": [
+        "ni.measurementlink.measurement.v1.MeasurementService",
+        "ni.measurementlink.measurement.v2.MeasurementService"
+      ],
+      "path": "start.bat",
+      "version": "1.0.4",
+      "annotations": {
+        "ni/service.collection": "CurrentTests.Inrush"
+      }
+    }
+  ]
+}

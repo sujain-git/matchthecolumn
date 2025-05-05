@@ -1,0 +1,23 @@
+{
+  "services": [
+    {
+      "displayName": "SampleMeasurement",
+      "serviceClass": "SampleMeasurement_Python",
+      "descriptionUrl": "https://www.example.com/SampleMeasurement.html",
+      "providedInterfaces": [
+        "ni.measurementlink.measurement.v2.MeasurementService"
+      ],
+      "path": "start.bat",
+      "version": "1.0.6",
+      "annotations": {
+        "ni/service.description": "Testing extra Client info",
+        "client/extra.NumberID" : 500,
+        "client/extra.Parts" : [ "A25898", "A25412" ],
+        "client/extra.GroupName" : {
+            "SpeakerType": "true",
+            "PhoneType": "false"
+        }
+      }
+    }
+  ]
+}
