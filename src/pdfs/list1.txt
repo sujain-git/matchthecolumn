@@ -1,0 +1,15 @@
+specs = [
+    "Frequency range",
+    "Small signal gain",
+    "Gain flatness",
+    "Input return loss (S11)",
+    "Output return loss (S22)",
+    "Output 1dB compression (OP1dB)",
+    "Output third-order intercept (OIP3)",
+    "Output second-order intercept (OIP2)",
+    "Noise figure",
+    "Insertion loss (internal bypass mode)",
+    "Input P1dB compression",
+    "Input P0.1dB compression",
+    "Input third-order intercept (IIP3)"
+]

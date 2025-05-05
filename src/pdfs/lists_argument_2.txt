@@ -1,0 +1,76 @@
+// Message that defines the measurement configurations
+message DCMeasurementConfigurations{
+  double voltage_level = 1;
+  double current_limit = 2;
+  double voltage_level_range = 3;
+  double current_limit_range = 4;
+  double source_delay = 5;
+}
+
+// Message that defines the measurement outputs
+message DCMeasurementOutputs{
+  double voltage_measurement = 1;
+  double current_measurement = 2;
+}
+
+
+message SampleStreamingMeasurementConfigurations {
+  string name = 1;
+  int32 num_responses = 2;
+  int32 data_size = 3;
+  bool cumulative_data = 4;
+  int32 response_interval_in_ms = 5;
+  int32 error_on_index = 6;
+}
+// Message that defines the measurement outputs
+message SampleStreamingMeasurementOutputs {
+  string name = 1;
+  int32 index = 2;
+  repeated int32 data = 3;
+}
+
+// Message that defines the measurement configurations
+message DAQmxAnalogInputMeasurementConfigurations{
+  string physical_channel = 1;
+  double sample_rate = 2;
+  int32 number_of_samples = 3;
+  double minimum_voltage = 4;
+  double maximum_voltage = 5;
+}
+
+// Message that defines the measurement outputs
+message DAQmxAnalogInputMeasurementOutputs{
+  ni.protobuf.types.DoubleAnalogWaveform waveform = 1;
+}
+
+
+def measure(
+    voltage_level: float,
+    voltage_level_range: float,
+    current_limit: float,
+    current_limit_range: float,
+    source_delay: float,
+    input_pin: str,
+    measurement_type: _visa_dmm.Function,
+    range: float,
+    resolution_digits: float,
+    output_pin: str,
+) -> tuple[float]:
+
+[voltage_level, current_limit, voltage_level_range, current_limit_range, source_delay, voltage_measurement, current_measurement]
+[pin_name, voltage_level, current_limit, voltage_level_range, current_limit_range, source_delay, voltage_measurement, current_measurement, resource_name, session_name]
+
+[name, num_responses, data_size, cumulative_data, response_interval_in_ms, error_on_index, name, index, data]
+
+[physical_channel, sample_rate, number_of_samples, minimum_voltage, maximum_voltage, waveform] 
+
+  [ voltage_level,
+    voltage_level_range ,
+    current_limit       ,
+    current_limit_range ,
+    source_delay        ,
+    input_pin           ,
+    measurement_type    ,
+    range               ,
+    resolution_digits   ,
+    output_pin]
