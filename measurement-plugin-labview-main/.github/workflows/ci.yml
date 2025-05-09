@@ -1,0 +1,24 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+      - 'releases/**'
+  workflow_call:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  run_g_tests:
+    name: Run LabVIEW Tests
+    if: ${{ github.repository == 'ni/measurement-plugin-labview' || github.event.pull_request.head.repo.full_name == 'ni/measurement-plugin-labview' }}
+    uses: ./.github/workflows/run_g_tests.yml
+
+  run_vi_analyzer:
+    name: Run VI Analyzer
+    if: ${{ github.repository == 'ni/measurement-plugin-labview' || github.event.pull_request.head.repo.full_name == 'ni/measurement-plugin-labview' }}
+    uses: ./.github/workflows/run_vi_analyzer.yml
+

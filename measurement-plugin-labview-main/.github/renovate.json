@@ -1,0 +1,14 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "branchPrefix": "users/renovate/",
+    "extends": ["config:recommended", ":maintainLockFilesMonthly"],
+    "git-submodules": {
+      "enabled": true
+    },
+    "packageRules": [
+      {
+        "matchDepNames": ["third_party/ni-apis", "third_party/protobuf"],
+        "extends": ["schedule:monthly", ":dependencyDashboardApproval"]
+      }
+    ]
+  }

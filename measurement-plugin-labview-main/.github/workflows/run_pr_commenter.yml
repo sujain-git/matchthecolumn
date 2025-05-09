@@ -1,0 +1,47 @@
+name: Run PR Commenter
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  run_pr_commenter:
+    name: Run PR Commenter
+    runs-on: 
+      - self-hosted
+      - windows
+      - x64
+      - rdss-measlinkbot-win-10-lv64
+    timeout-minutes: 20
+    steps:
+    - name: Enable git long paths
+      run: git config  --global core.longpaths true
+
+    - uses: actions/checkout@v4
+
+    - uses: actions/checkout@v4
+      with:
+        ref: main
+        path: target_for_diff
+
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.13'
+    - run: pip install click requests
+
+    - name: Open LabVIEW 2023
+      run: |
+        Start-Process "C:\\Program Files\\National Instruments\\LabVIEW 2023\\LabVIEW.exe"
+        Start-Sleep 60
+
+    - name: Run G Diff
+      id: run-diff
+      run: |
+        python ${{runner.workspace}}/measurement-plugin-labview/Source/Tools/run_diff.py --token ${{secrets.GITHUB_TOKEN}} --pull-req ${{github.event.pull_request.number}} --commit-id ${{github.event.pull_request.head.sha}}
+      timeout-minutes: 10
+
+    - name: Close LabVIEW 2023
+      run: 
+        wmic process where name="LabVIEW.exe" call terminate
+      shell: cmd
+      if: always()
