@@ -19,7 +19,7 @@ specs_sentence = [
 ]
 
 
-measurements_sentences = []
+measurements_sentences = {}
 measurement_dict = {}
 
 import csv
@@ -39,7 +39,7 @@ for row in rows:
 # Extract all columns that contain 'description' in their header
     description_values = [value for key, value in target_row.items() if 'description' in key.lower()]
     for list1 in description_values:
-        measurements_sentences.append(list1)
+        measurements_sentences[i] = list1
         measurement_dict[i] = list1, target_row["File Path"], target_row["Function"], target_row["Input Parameters"], target_row["Output Parameters"]
         i = i + 1
 
@@ -63,9 +63,11 @@ for row in rows:
 # print(measurements_sentences[1])
 # print(measurements_sentences[2])
 
+measurements_sentences_list = list(measurements_sentences.values())
+
 # Encode both sets
 spec_embeddings = model.encode(specs_sentence, convert_to_tensor=True)
-measurement_embeddings = model.encode(measurements_sentences, convert_to_tensor=True)
+measurement_embeddings = model.encode(measurements_sentences_list, convert_to_tensor=True)
 
 # Match each spec to its best measurement
 print("Matching results:\n")
@@ -73,7 +75,7 @@ for i, spec in enumerate(specs_sentence):
     cosine_scores = util.pytorch_cos_sim(spec_embeddings[i], measurement_embeddings)
     best_idx = cosine_scores.argmax().item()
     print(f"✅ Spec: {spec}\n")
-    print(f"🔁 Best Measurement Match: {measurements_sentences[best_idx]}\n")
+    print(f"🔁 Best Measurement Match: {measurements_sentences_list[best_idx]}\n")
     print(f"cosine similarity score: {cosine_scores[0][best_idx]:.3f}\n")
     print(f"Info:{measurement_dict.get(best_idx)} \n")
     print(f"----------------------")

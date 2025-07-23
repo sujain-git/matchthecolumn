@@ -13,7 +13,7 @@ class FolderBrowser(QWidget):
 
         layout = QVBoxLayout()
 
-        self.button = QPushButton("Browse Folder")
+        self.button = QPushButton("Browse Meaurements Repo Folder")
         self.button.clicked.connect(self.select_folder)
         layout.addWidget(self.button)
 
