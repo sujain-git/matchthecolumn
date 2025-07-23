@@ -176,7 +176,7 @@ list3_columns = df3.columns.tolist()
 list4_columns = df4.columns.tolist()
 
 print("\nMatching product columns:")
-matched_product_columns = match_columns(list3_columns, list4_columns, df3=df3, df4=df4, semantic_similarity_threshold=0.4)
+matched_product_columns = match_columns(list3_columns, list4_columns, df1=df3, df2=df4, semantic_similarity_threshold=0.4)
 
 for col1, col2, similarity, domain_compatible in matched_product_columns:
     print(f"'{col1}' <--> '{col2}' | Semantic Similarity: {similarity:.4f} | Domain Compatible: {domain_compatible}")

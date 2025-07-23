@@ -103,7 +103,7 @@ def generate_descriptions(functions):
         outputs = ", ".join(func['outputs'])
 
         # Create the description sentence
-        description = f"Perform {function_name} where inputs are {inputs} and outputs are {outputs}."
+        description = f"Perform {function_name} where:\n inputs are {inputs} \n and \n outputs are {outputs} \n."
         descriptions.append(description)
 
     return descriptions
@@ -130,5 +130,5 @@ def iterate_folder(folder_path):
     return all_signatures
 
 # Example usage
-folder_path = "~/Desktop/dev/matchthecolumn/src/python_examples/"
+folder_path = "C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples"
 signatures = iterate_folder(folder_path)

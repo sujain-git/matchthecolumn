@@ -1,0 +1,40 @@
+File Path,Function,Inputs,Outputs
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\game_of_life\measurement.py,measure,"width: int, height: int, update_interval_msec: int, max_generations: int",generation: nims.DataType.UInt32
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\game_of_life\measurement.py,_initialize_xydata_and_frame,"width: int, height: int",return: xydata_pb2.DoubleXYData
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\game_of_life\measurement.py,_initialize_grid_with_seeded_data,"rows: int, cols: int, probability: float",return: Grid
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\game_of_life\measurement.py,_initialize_grid,"rows: int, cols: int",return: Grid
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\game_of_life\measurement.py,_count_neighbors,"grid: Grid, row: int, col: int",return: int
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\game_of_life\measurement.py,_update_grid,grid: Grid,return: Grid
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\game_of_life\measurement.py,main,verbosity: int,return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nidaqmx_analog_input\measurement.py,measure,"pin_name: str, sample_rate: float, number_of_samples: int",acquired_samples: nims.DataType.DoubleArray1D
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nidaqmx_analog_input\measurement.py,_log_measured_values,"samples: list[float], max_samples_to_display: int",return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nidaqmx_analog_input\measurement.py,main,verbosity: int,return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nidaqmx_analog_input\measurement.py,cancel_callback,,return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nidcpower_source_dc_voltage\measurement.py,measure,"pin_names: Iterable[str], voltage_level: float, voltage_level_range: float, current_limit: float, current_limit_range: float, source_delay: float",in_compliance: nims.DataType.BooleanArray1D
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nidcpower_source_dc_voltage\measurement.py,_wait_for_event,"channels: nidcpower.session._SessionBase, cancellation_event: threading.Event, event_id: nidcpower.enums.Event, timeout: float",return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nidcpower_source_dc_voltage\measurement.py,_log_measurements,"measured_sites: Iterable[int], measured_pins: Iterable[str], measured_values: Iterable[_Measurement]",return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nidcpower_source_dc_voltage\measurement.py,main,verbosity: int,return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nidcpower_source_dc_voltage_with_multiplexer\measurement.py,measure,"pin_name: str, voltage_level: float, voltage_level_range: float, current_limit: float, current_limit_range: float, source_delay: float",current_measurement: nims.DataType.Double
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nidcpower_source_dc_voltage_with_multiplexer\measurement.py,_wait_for_nidcpower_event,"channels: nidcpower.session._SessionBase, cancellation_event: threading.Event, event_id: nidcpower.enums.Event, timeout: float",return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nidcpower_source_dc_voltage_with_multiplexer\measurement.py,main,verbosity: int,return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nidigital_spi\measurement.py,measure,"pin_names: Iterable[str], specifications_file_path: str, levels_file_path: str, timing_file_path: str, pattern_file_path: str, load_files: bool",failing_sites: nims.DataType.Int32Array1D
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nidigital_spi\measurement.py,_resolve_relative_path,"directory_path: pathlib.Path, file_path: str | pathlib.Path",return: pathlib.Path
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nidigital_spi\measurement.py,main,verbosity: int,return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nidmm_measurement\measurement.py,measure,"pin_name: str, measurement_type: Function, range: float, resolution_digits: float",absolute_resolution: nims.DataType.Double
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nidmm_measurement\measurement.py,main,verbosity: int,return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nifgen_standard_function\measurement.py,measure,"pin_names: Iterable[str], waveform_type: Waveform, frequency: float, amplitude: float, duration: float",return: tuple[()]
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nifgen_standard_function\measurement.py,_wait_until_done,"sessions: Sequence[nifgen.Session], cancellation_event: threading.Event, duration: float",return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nifgen_standard_function\measurement.py,main,verbosity: int,return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\niscope_acquire_waveform\measurement.py,measure,"measurement_pins: Sequence[str], vertical_range: float, vertical_coupling: str, input_impedance: float, min_sample_rate: float, min_record_length: int, trigger_pin: str, trigger_level: float, trigger_slope: str, auto_trigger: bool, trigger_coupling: str, timeout: float",waveform3: nims.DataType.DoubleArray1D
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\niscope_acquire_waveform\measurement.py,_wait_until_done,"session: niscope.Session, cancellation_event: threading.Event, timeout: float",return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\niscope_acquire_waveform\measurement.py,main,verbosity: int,return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\niswitch_control_relays\measurement.py,measure,"relay_names: str, close_relays: bool",return: tuple[()]
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\niswitch_control_relays\measurement.py,main,verbosity: int,return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nivisa_dmm_measurement\measurement.py,measure,"pin_name: str, measurement_type: Function, range: float, resolution_digits: float",measured_value: nims.DataType.Double
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\nivisa_dmm_measurement\measurement.py,main,verbosity: int,return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\output_voltage_measurement\measurement.py,measure,"voltage_level: float, voltage_level_range: float, current_limit: float, current_limit_range: float, source_delay: float, input_pin: str, measurement_type: _visa_dmm.Function, range: float, resolution_digits: float, output_pin: str",measured_value: nims.DataType.Double
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\output_voltage_measurement\measurement.py,_wait_for_nidcpower_event,"channels: nidcpower.session._SessionBase, cancellation_event: threading.Event, event_id: nidcpower.enums.Event, timeout: float",return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\output_voltage_measurement\measurement.py,main,verbosity: int,return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\sample_measurement\measurement.py,measure,"float_input: float, double_array_input: Iterable[float], bool_input: bool, string_input: str, enum_input: Color, protobuf_enum_input: color_pb2.ProtobufColor.ValueType, string_array_in: Iterable[str]",Converted String 2D Array: nims.DataType.String2DArray
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\sample_measurement\measurement.py,main,verbosity: int,return: None
+C:/dev/git/matchthecolumn/measurement-plugin-python-main/examples\sample_measurement\measurement.py,cancel_callback,,return: None
