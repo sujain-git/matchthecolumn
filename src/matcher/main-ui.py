@@ -11,7 +11,7 @@ class CSVViewer(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("CSV Viewer")
-        self.setGeometry(100, 100, 500, 200)
+        self.setGeometry(200, 200, 760,630)
 
         self.model = SentenceTransformer('all-MiniLM-L6-v2')
         self.spec_data = {}
@@ -24,19 +24,23 @@ class CSVViewer(QWidget):
         layout = QVBoxLayout()
 
         self.load_button = QPushButton("Load Spec Description File")
+        self.load_button.width = 50;
         self.load_button.clicked.connect(self.load_csv)
         layout.addWidget(self.load_button)
 
         self.dropdown = QComboBox()
+        self.dropdown.width = 50;
         self.dropdown.currentIndexChanged.connect(self.update_label)
         layout.addWidget(self.dropdown)
 
         self.label = QLabel("Select a specification to see the description.")
+        self.label.width = 50;
         self.label.setWordWrap(True)
         layout.addWidget(self.label)
 
         # Add this inside your CSVViewer class __init__ method
         self.match_button = QPushButton("Find Matching Measurement")
+        self.match_button.width = 50;
         self.match_button.clicked.connect(self.find_matching_measurements)
         layout.addWidget(self.match_button)
 
